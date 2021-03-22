@@ -1,3 +1,9 @@
+$(window).on("load", function(){
+    // Preloader
+    $(".preloader").delay(500).fadeOut("slow");
+});
+
+
 $(document).ready(function () {
     // Navbar shrink
     $(window).on("scroll", function () {
@@ -88,4 +94,36 @@ $(document).ready(function () {
     $(".navbar").on("click", function(){
         $('.navbar-collapse').collapse("hide");
     });
-})
+    // Toggle Theme - Light & Dark
+    function toggleTheme() {
+        if (localStorage.getItem("app-theme") !== null) {
+            if (localStorage.getItem("app-theme") !== "dark") {
+                $("body").addClass("dark");
+            } else {
+                $("body").removeClass("dark");
+            }
+        }
+        updateIcon();
+    }
+    toggleTheme();
+
+    $(".toggle-theme").on("click",function() {      
+        $("body").toggleClass("dark");
+        if ($("body").hasClass("dark")) {
+            localStorage.setItem("app-theme","light");
+        }
+        else {
+            localStorage.setItem("app-theme","dark");
+        }
+        updateIcon();
+    });
+    function updateIcon() {
+        if ($("body").hasClass("dark")) {
+            $(".toggle-theme i").removeClass("fa-moon");
+            $(".toggle-theme i").addClass("fa-sun");
+        } else {
+            $(".toggle-theme i").removeClass("fa-sun");
+            $(".toggle-theme i").addClass("fa-moon");
+        }
+    }
+});

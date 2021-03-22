@@ -26,6 +26,25 @@
     padding: 0;
     outline: none!important;
 }
+body {
+    font-family: 'Raleway';
+    font-size: 16px;
+    font-weight: 300;
+    overflow-x: hidden;
+    background-color: #fff;
+    line-height: 1.5;
+}
+body.dark {
+    background-color: var(--bg-dark);
+    --black-100: var(--bg-dark);
+    --black-000: var(--bg-dark);
+    --main-to-dark-color: var(--bg-dark);
+    --dark-to-main-color: var(--main-color);
+    --shadow-black-100: var(--shadow-black-300);
+    --black-alpha-100: rgba(255,255,255,0.05);
+    --black-900: #ffffff;
+    --black-400: #bbbbbb;
+}
 img {
     max-width: 100%;
     vertical-align: middle;
@@ -71,13 +90,29 @@ ul {
     color: var(--main-color);
     background-color: #fff;
 }
-body {
-    font-family: 'Raleway';
-    font-size: 16px;
-    font-weight: 300;
-    overflow-x: hidden;
-    background-color: #fff;
-    line-height: 1.5;
+
+/* ----------------
+    Preloader
+---------------- */
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2100;
+    background-color: var(--main-to-dark-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.preloader span {
+    display: block;
+    height: 60px;
+    width: 60px;
+    background-color: var(--dark-to-main-color);
+    border-radius: 50%;
+    animation: zoomInOut_01 1s ease infinite;
 }
 /* ----------------
     Navbar 
@@ -142,7 +177,7 @@ body {
 }
 .home-text h1 {
     font-size: 43px;
-    font-weight: 500;
+    font-weight: 700;
     color: #fff;
     margin: 0 0 20px;
 }
@@ -901,6 +936,15 @@ body {
         box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
     }
 }
+@keyframes zoomInOut_01 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
 
 /* Responsive */
 @media (max-width:993px) {
@@ -937,17 +981,67 @@ body {
     .home-text h1 {
         font-size: 40px;
     }
+    .app-download-item {
+        margin-bottom: 30px;
+    }
+    .how-it-works-item.line-right::before {
+        content: none;
+    }
+    .pricing-plan,
+    .how-it-works-item,
+    .app-download-item {
+        box-shadow: var(--shadow-black-100);
+        border-radius: 10px;
+    }
+    .footer-col {
+        margin-bottom: 30px;
+    }
 }
 @media (max-width:767px) {
     .home-text {
         margin-bottom: 80px;
     }
+    .fun-facts-img {
+        margin-bottom: 30px;
+    }
+    .contact-form {
+        margin-top: 20px;
+    }
+    .section-title h2 {
+        font-size: 30px;
+    }
+    .fun-facts .section-title h2 {
+        text-align: center;
+    }
 }
-@media (max-width:775px) {
+@media (max-width:575px) {
     .home-text h1 {
         font-size: 30px;
     }
     .home-text p {
         font-size: 16px;
     }
+    .section-title h2 {
+        font-size: 30px;
+    }
+}
+
+/* Toogle Theme - Light and dark mode */
+.toggle-theme {
+    position: fixed;
+    right: 20px;
+    top:calc(50% - 20px);
+    height: 40px;
+    width: 40px;
+    background-color: var(--dark-to-main-color);
+    border-radius: 50%;
+    box-shadow: var(--shadow-black-300);
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1200;
+}
+.toggle-theme i {
+    line-height: 40px;
 }
