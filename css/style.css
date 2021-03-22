@@ -174,6 +174,7 @@ ul {
     position: relative;
     z-index: 1;
     border-radius: 0 0 200px;
+    overflow-x: hidden;
 }
 .home-text h1 {
     font-size: 43px;
@@ -1029,7 +1030,7 @@ ul {
 /* Toogle Theme - Light and dark mode */
 .toggle-theme {
     position: fixed;
-    right: 20px;
+    right: 25px;
     top:calc(50% - 20px);
     height: 40px;
     width: 40px;
